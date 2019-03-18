@@ -112,7 +112,6 @@
 				"200": {
 					"context": "$.response.locationInfo",
 					"routes": [
-						"doT.2",
 						"condition.1"
 					],
 					"metaName": "200"
