@@ -76,7 +76,9 @@
 					"metaName": "200"
 				},
 				"default": {
-					"routes": [],
+					"routes": [
+						"doT.1"
+					],
 					"context": "$.response.weatherInfo",
 					"metaName": "Default"
 				},
@@ -144,7 +146,7 @@
 				{
 					"name": "template",
 					"type": "string",
-					"value": "\"{\\n  \\\"coord\\\": {\\n    \\\"lon\\\": {{=it.response.locationInfo.data.lon}},\\n    \\\"lat\\\": {{=it.response.locationInfo.data.lat}},\\n  },\\n  \\\"weather\\\": [\\n    {\\n      \\\"id\\\": {{=it.response.weatherInfo.data.weather[0].id}},\\n      \\\"main\\\": \\\"{{=it.response.weatherInfo.data.weather[0].main}}\\\",\\n      \\\"description\\\": \\\"{{=it.response.weatherInfo.data.weather[0].description}}\\\",\\n      \\\"icon\\\": \\\"{{=it.response.weatherInfo.data.weather[0].icon}}\\\"\\n    }\\n  ],\\n  \\\"wind\\\": {\\n    \\\"speed\\\": {{=it.response.weatherInfo.data.wind.speed}},\\n    \\\"deg\\\": {{=it.response.weatherInfo.data.wind.deg}}\\n  },\\n  \\\"clouds\\\": {\\n    \\\"all\\\": {{=it.response.weatherInfo.data.clouds.all}}\\n  }\\n}\""
+					"value": "\"{\\n  \\\"city\\\": \\\"{{=it.response.locationInfo.data.city}}\\\", \\n  \\\"country\\\": \\\"{{=it.response.locationInfo.data.country}}\\\", \\n  \\\"country_code\\\": \\\"{{=it.response.locationInfo.data.countryCode}}\\\", \\n  \\\"coord\\\": {\\n    \\\"lon\\\": {{=it.response.locationInfo.data.lon}},\\n    \\\"lat\\\": {{=it.response.locationInfo.data.lat}}\\n  },\\n  \\\"weather\\\": [\\n    {\\n      \\\"id\\\": {{=it.response.weatherInfo.data.weather[0].id}},\\n      \\\"main\\\": \\\"{{=it.response.weatherInfo.data.weather[0].main}}\\\",\\n      \\\"description\\\": \\\"{{=it.response.weatherInfo.data.weather[0].description}}\\\",\\n      \\\"icon\\\": \\\"{{=it.response.weatherInfo.data.weather[0].icon}}\\\"\\n    }\\n  ],\\n  \\\"wind\\\": {\\n    \\\"speed\\\": {{=it.response.weatherInfo.data.wind.speed}},\\n    \\\"deg\\\": {{=it.response.weatherInfo.data.wind.deg}}\\n  },\\n  \\\"clouds\\\": {\\n    \\\"all\\\": {{=it.response.weatherInfo.data.clouds.all}}\\n  }\\n}\""
 				}
 			],
 			"outputs": {
@@ -226,13 +228,18 @@
 		},
 		"condition.1": {
 			"type": "nodehandler://axway-flow/condition",
-			"name": "Has request failed?",
-			"method": "exists",
+			"name": "Location found?",
+			"method": "equals",
 			"parameters": [
 				{
 					"name": "source",
 					"type": "jsonpath",
-					"value": "$.response.locationInfo.body.status"
+					"value": "$.response.locationInfo.data.status"
+				},
+				{
+					"name": "value",
+					"type": "string",
+					"value": "\"success\""
 				}
 			],
 			"outputs": {
@@ -240,18 +247,18 @@
 					"routes": [
 						"doT.2"
 					],
-					"context": "$.exists",
+					"context": "$.equals",
 					"metaName": "True"
 				},
 				"false": {
 					"routes": [
 						"http.1"
 					],
-					"context": "$.exists",
+					"context": "$.equals",
 					"metaName": "False"
 				}
 			},
-			"metaMethod": "Exists"
+			"metaMethod": "Equals"
 		}
 	}
 }
