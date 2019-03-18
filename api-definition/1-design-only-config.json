@@ -1,0 +1,7 @@
+{
+	"name": "Weather API - Axway Imagine",
+	"path": "/api/v1/weather",
+	"state": "unpublished",
+	"version": "1.0.0",
+	"organization": "API Development"
+}

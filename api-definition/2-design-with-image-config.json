@@ -1,0 +1,17 @@
+{
+	"name": "Axway Imagine - Weather API",
+	"path": "/api/v1/weather",
+	"state": "unpublished",
+	"version": "1.0.0",
+	"organization": "API Development", 
+	"image":"imagine-api-logo.png", 
+   "tags":{
+      "Imagine":[
+         "Axway",
+         "Chantilly"
+      ],
+      "API-State":[
+         "Designed"
+      ]
+   }
+}

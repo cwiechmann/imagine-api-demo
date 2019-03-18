@@ -1,0 +1,51 @@
+{
+   "name":"Weather API - Axway Imagine",
+   "path":"/api/v1/weather",
+   "state":"published",
+   "version":"1.0.0",
+   "organization":"API Development",
+   "image":"imagine-api-logo.png",
+   "backendBasepath":"https://any.server.com:7676",
+   "tags":{
+      "Imagine":[
+         "Axway",
+         "Chantilly"
+      ]
+   }, 
+   "authenticationProfiles":[
+      {
+         "name":"_default",
+         "isDefault":"true",
+         "parameters":{
+            "apiKey":"4249823490238490",
+            "apiKeyField":"KeyId",
+            "httpLocation":"QUERYSTRING_PARAMETER"
+         },
+         "type":"apiKey"
+      }
+   ], 
+   "securityProfiles":[
+      {
+         "name":"_default",
+         "isDefault":true,
+         "devices":[
+            {
+               "name":"API Key",
+               "type":"apiKey",
+               "order":0,
+               "properties":{
+                  "apiKeyFieldName":"KeyId",
+                  "takeFrom":"HEADER",
+                  "removeCredentialsOnSuccess":"false"
+               }
+            }
+         ]
+      }
+   ], 
+   "clientOrganizations":[
+      "ALL"
+   ],
+   "applications":[
+      { "name":"Test" }
+   ]
+}

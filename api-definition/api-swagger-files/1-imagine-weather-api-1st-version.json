@@ -1,0 +1,248 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "Weather API",
+    "version": "1.0",
+    "description": "### **New API-Design - No-Mock/No-Implementation - Please provide feedback.**\n\nAnother great Weather-API which is supposed to provide you with the weather. :-)  \nLearn more at the [Axway Imagine Summit](https://www.imaginesummits.com/europe) in Europe.",
+    "contact": {
+      "name": "Christoph Wiechmann",
+      "url": "http://www.axway.com",
+      "email": "cwiechmann@axway.com"
+    },
+    "license": {
+      "name": "Apache 2.0"
+    }
+  },
+  "paths": {
+    "/axway-imagine": {
+      "get": {
+        "responses": {
+          "200": {
+            "description": "",
+            "examples": {
+              "application/json": {
+                "coord": {
+                  "lon": -0.13,
+                  "lat": 51.51
+                },
+                "weather": [
+                  {
+                    "id": 300,
+                    "main": "Drizzle",
+                    "description": "light intensity drizzle",
+                    "icon": "09d"
+                  }
+                ],
+                "wind": {
+                  "speed": 4.1,
+                  "deg": 80
+                },
+                "clouds": {
+                  "all": 90
+                }
+              }
+            },
+            "schema": {
+              "type": "object",
+              "properties": {
+                "coord": {
+                  "type": "object",
+                  "properties": {
+                    "lon": {
+                      "type": "number"
+                    },
+                    "lat": {
+                      "type": "number"
+                    }
+                  }
+                },
+                "weather": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "id": {
+                        "type": "integer"
+                      },
+                      "main": {
+                        "type": "string"
+                      },
+                      "description": {
+                        "type": "string"
+                      },
+                      "icon": {
+                        "type": "string"
+                      }
+                    }
+                  }
+                },
+                "wind": {
+                  "type": "object",
+                  "properties": {
+                    "speed": {
+                      "type": "number"
+                    },
+                    "deg": {
+                      "type": "integer"
+                    }
+                  }
+                },
+                "clouds": {
+                  "type": "object",
+                  "properties": {
+                    "all": {
+                      "type": "integer"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "summary": "Get the actual weather in Chantilly.",
+        "description": "You want to know the weather outside?",
+        "operationId": "weatherImagine"
+      }
+    }
+  },
+  "securityDefinitions": {},
+  "definitions": {
+    "weatherResult": {
+      "type": "object",
+      "properties": {
+        "weather": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "main": {
+                "type": "string"
+              },
+              "description": {
+                "type": "string"
+              },
+              "icon": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "wind": {
+          "type": "object",
+          "properties": {
+            "speed": {
+              "type": "number"
+            },
+            "deg": {
+              "type": "integer"
+            }
+          }
+        },
+        "clouds": {
+          "type": "object",
+          "properties": {
+            "all": {
+              "type": "integer"
+            }
+          }
+        }
+      },
+      "title": "Weather-Information",
+      "description": "Contains information about the weather at the requested location."
+    }
+  },
+  "schemes": [
+    "http"
+  ],
+  "consumes": [
+    "application/json"
+  ],
+  "produces": [
+    "application/json"
+  ],
+  "host": "dontknowyet.com",
+  "basePath": "/api/v1/weather",
+  "responses": {
+    "Weather-Response": {
+      "schema": {
+        "type": "object",
+        "properties": {
+          "coord": {
+            "type": "object",
+            "properties": {
+              "lon": {
+                "type": "number"
+              },
+              "lat": {
+                "type": "number"
+              }
+            }
+          },
+          "weather": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "integer"
+                },
+                "main": {
+                  "type": "string"
+                },
+                "description": {
+                  "type": "string"
+                },
+                "icon": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "wind": {
+            "type": "object",
+            "properties": {
+              "speed": {
+                "type": "number"
+              },
+              "deg": {
+                "type": "integer"
+              }
+            }
+          },
+          "clouds": {
+            "type": "object",
+            "properties": {
+              "all": {
+                "type": "integer"
+              }
+            }
+          }
+        }
+      },
+      "examples": {
+        "application/json": {
+          "coord": {
+            "lon": -0.13,
+            "lat": 51.51
+          },
+          "weather": [
+            {
+              "id": 300,
+              "main": "Drizzle",
+              "description": "light intensity drizzle",
+              "icon": "09d"
+            }
+          ],
+          "wind": {
+            "speed": 4.1,
+            "deg": 80
+          },
+          "clouds": {
+            "all": 90
+          }
+        }
+      },
+      "description": "A weather response used by different methods"
+    }
+  }
+}

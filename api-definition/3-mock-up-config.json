@@ -1,0 +1,28 @@
+{
+   "name":"Weather API - Axway Imagine",
+   "path":"/api/v1/weather",
+   "state":"unpublished",
+   "version":"1.0.0",
+   "organization":"API Development",
+   "image":"imagine-api-logo.png",
+   "backendBasepath":"http://192.168.65.1:8080/api",
+   "tags":{
+      "Imagine":[
+         "Axway",
+         "Chantilly"
+      ],
+      "API-State":[
+         "Mocked"
+      ]
+   }, 
+	"authenticationProfiles": [
+		{
+			"name": "HTTP Basic",
+			"parameters": {
+				"username": "6xKFp3hL7znGM+sfb90NDjmt5t9mhvqR",
+				"password": ""
+			},
+			"type": "http_basic"
+		}
+	]
+}
