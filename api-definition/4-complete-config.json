@@ -1,29 +1,27 @@
 {
-   "name":"Weather API - Axway Imagine",
+   "name":"Axway Imagine - Weather API",
    "path":"/api/v1/weather",
    "state":"published",
    "version":"1.0.0",
    "organization":"API Development",
    "image":"imagine-api-logo.png",
-   "backendBasepath":"https://any.server.com:7676",
+   "backendBasepath":"http://192.168.65.1:8081/api",
    "tags":{
       "Imagine":[
          "Axway",
          "Chantilly"
       ]
    }, 
-   "authenticationProfiles":[
-      {
-         "name":"_default",
-         "isDefault":"true",
-         "parameters":{
-            "apiKey":"4249823490238490",
-            "apiKeyField":"KeyId",
-            "httpLocation":"QUERYSTRING_PARAMETER"
-         },
-         "type":"apiKey"
-      }
-   ], 
+	"authenticationProfiles": [
+		{
+			"name": "HTTP Basic",
+			"parameters": {
+				"username": "6xKFp3hL7znGM+sfb90NDjmt5t9mhvqR",
+				"password": ""
+			},
+			"type": "http_basic"
+		}
+	],
    "securityProfiles":[
       {
          "name":"_default",
@@ -43,7 +41,9 @@
       }
    ], 
    "clientOrganizations":[
-      "ALL"
+      "FastCars", 
+	  "Plexus Health", 
+	  "HealthMob" 
    ],
    "applications":[
       { "name":"Test" }

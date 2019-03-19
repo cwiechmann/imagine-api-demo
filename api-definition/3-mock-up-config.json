@@ -1,11 +1,11 @@
 {
-   "name":"Weather API - Axway Imagine",
+   "name":"Axway Imagine - Weather API",
    "path":"/api/v1/weather",
    "state":"unpublished",
    "version":"1.0.0",
    "organization":"API Development",
    "image":"imagine-api-logo.png",
-   "backendBasepath":"http://192.168.65.1:8081/api",
+   "backendBasepath":"http://192.168.65.1:8080/api",
    "tags":{
       "Imagine":[
          "Axway",
