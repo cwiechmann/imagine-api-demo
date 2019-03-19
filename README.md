@@ -20,12 +20,12 @@ scripts\run-swagger-import.bat -a "https://next-api.stoplight.io/files.export?pr
 3. API is deployed, with only 1 Method, explore it in API-Portal  
 4. Re-Deploy the same 1-Method-API with an Images, some tags, etc.  
 ``
-C:\temp\apimanager-swagger-promote\scripts\run-swagger-import.bat -a "https://next-api.stoplight.io/files.export?projectId=19639&branch=version%2F1.0&path=weather.oas2.yml" -h api-env -u apiadmin -p changeme -c api-definition/2-design-with-image-config.json
+scripts\run-swagger-import.bat -a "https://next-api.stoplight.io/files.export?projectId=19639&branch=version%2F1.0&path=weather.oas2.yml" -h api-env -u apiadmin -p changeme -c api-definition/2-design-with-image-config.json
 ``
 4. As the initial API-Version has only one useless method, we are now loading the 2nd version of the API-Swagger into Stoplight: 2-imagine-weather-api-2nd-version.json  
 5. And re-deploy with the same configuration (incl. Image, Tags, etc.)  
 ``
-C:\temp\apimanager-swagger-promote\scripts\run-swagger-import.bat -a "https://next-api.stoplight.io/files.export?projectId=19639&branch=version%2F1.0&path=weather.oas2.yml" -h api-env -u apiadmin -p changeme -c api-definition/2-design-with-image-config.json
+scripts\run-swagger-import.bat -a "https://next-api.stoplight.io/files.export?projectId=19639&branch=version%2F1.0&path=weather.oas2.yml" -h api-env -u apiadmin -p changeme -c api-definition/2-design-with-image-config.json
 ``
 
 ### Mock-Up the Initial API
