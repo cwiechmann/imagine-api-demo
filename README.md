@@ -58,3 +58,14 @@ It's time to implement the API with API-Builder. Explain the concept of Connecto
 ``
 scripts\run-swagger-import.bat -a "https://next-api.stoplight.io/files.export?projectId=19639&branch=version%2F1.0&path=weather.oas2.yml" -h api-env -u apiadmin -p changeme -c api-definition/4-complete-config.json
 ``
+### Implement the API using API-Builder
+As the final stage, after the API has been published and potentially used by Apps-, make clear, that even in that stage, the API can evolve by adding additional fields/methods to this API.  
+
+1. Import the Swagger-File: 3-imagine-weather-api-final-version.json which has an additional method  
+2. Deploy that API into the API-Manager (same configuration)  
+``
+scripts\run-swagger-import.bat -a "https://next-api.stoplight.io/files.export?projectId=19639&branch=version%2F1.0&path=weather.oas2.yml" -h api-env -u apiadmin -p changeme -c api-definition/4-complete-config.json
+``
+3. Reload the API in API-Portal to illustrate that existing Subscriptions stay and was deployed with Zero-Down-Time
+
+## Finish
