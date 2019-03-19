@@ -35,7 +35,7 @@ We now assume, that we got enough feedback on the Base-API-Design and it's time 
 2. Create a new API by importing the Swagger-Definition from Stoplight
 3. Save & Mock - Explain one flow - Test the Mock in API-Builder
 4. Changing the Swagger-File in Stoplight - Removing the "No-Mock" notice
-5. Now switching the config file to include the Backend-Base-Path, Backend-Security, added the Mock-Tag
+5. Now switching the config file to include the Backend-Base-Path, Backend-Security, added the Mock-Tag  
 ``
 scripts\run-swagger-import.bat -a "https://next-api.stoplight.io/files.export?projectId=19639&branch=version%2F1.0&path=weather.oas2.yml" -h api-env -u apiadmin -p changeme -c api-definition/3-mock-up-config.json
 ``
@@ -50,7 +50,7 @@ It's time to implement the API with API-Builder. Explain the concept of Connecto
 4. Explain, we did some work to implement a flow, using the Swagger-Connectors, used to Translate IP into location and Location into Weather.
 5. Run the flow out of the API-Builder UI, show the result. All good
 6. We decide to re-configure the API in API-Manager to use our Implementation-Service
-7. It's time to Publish the API, incl. API-Key Front-End-Security. Re-Deploy the API with config: 4-complete-config.json
+7. It's time to Publish the API, incl. API-Key Front-End-Security. Re-Deploy the API with config: 4-complete-config.json  
 ``
 scripts\run-swagger-import.bat -a "https://next-api.stoplight.io/files.export?projectId=19639&branch=version%2F1.0&path=weather.oas2.yml" -h api-env -u apiadmin -p changeme -c api-definition/4-complete-config.json
 ``
