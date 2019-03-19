@@ -1,5 +1,9 @@
-# imagine-api-demo
-Axway Imagine Summit API-Leraning-Lab Demo-Material
+# API-Management Lifecycle & DevOps Demo
+This Demo-Material is used to cover the API-Lifecycle-Handling in combination with Stoplight for API-Design, API-Builder for Mock- and API-Implementation. This all is combined with Swagger-Promote to seamslessly deploy the API into the API-Manager.  
+The Story is to simulate a brand new - API-First-Driven - Weather-API, that passes the following stages:
+- Only having an API-Design, which is going through some iterations/evolutions  
+- Secondly, a Mock-Service is created to be used by this API  
+- Lastly the API is implemented by an API-Builder Microservice  
 
 ## Preparation:
 1. Install & Setup Swagger-Promote (https://github.com/Axway-API-Management-Plus/apimanager-swagger-promote)
