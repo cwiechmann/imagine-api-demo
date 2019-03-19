@@ -1,5 +1,9 @@
-# imagine-api-demo
-Axway Imagine Summit API-Leraning-Lab Demo-Material
+# API-Management Lifecycle & DevOps Demo
+This Demo-Material is used to cover the API-Lifecycle-Handling in combination with Stoplight for API-Design, API-Builder for Mock- and API-Implementation. This all is combined with Swagger-Promote to seamslessly deploy the API into the API-Manager.  
+The Story is to simulate a brand new - API-First-Driven - Weather-API, that passes the following stages:
+- Only having an API-Design, which is going through some iterations/evolutions  
+- Secondly, a Mock-Service is created to be used by this API  
+- Lastly the API is implemented by an API-Builder Microservice  
 
 ## Preparation:
 1. Install & Setup Swagger-Promote (https://github.com/Axway-API-Management-Plus/apimanager-swagger-promote)
@@ -54,3 +58,14 @@ It's time to implement the API with API-Builder. Explain the concept of Connecto
 ``
 scripts\run-swagger-import.bat -a "https://next-api.stoplight.io/files.export?projectId=19639&branch=version%2F1.0&path=weather.oas2.yml" -h api-env -u apiadmin -p changeme -c api-definition/4-complete-config.json
 ``
+### Implement the API using API-Builder
+As the final stage, after the API has been published and potentially used by Apps-, make clear, that even in that stage, the API can evolve by adding additional fields/methods to this API.  
+
+1. Import the Swagger-File: 3-imagine-weather-api-final-version.json which has an additional method  
+2. Deploy that API into the API-Manager (same configuration)  
+``
+scripts\run-swagger-import.bat -a "https://next-api.stoplight.io/files.export?projectId=19639&branch=version%2F1.0&path=weather.oas2.yml" -h api-env -u apiadmin -p changeme -c api-definition/4-complete-config.json
+``
+3. Reload the API in API-Portal to illustrate that existing Subscriptions stay and the API was deployed with Zero-Down-Time to consumers
+
+## Finish
