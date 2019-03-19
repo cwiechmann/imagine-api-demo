@@ -66,6 +66,6 @@ As the final stage, after the API has been published and potentially used by App
 ``
 scripts\run-swagger-import.bat -a "https://next-api.stoplight.io/files.export?projectId=19639&branch=version%2F1.0&path=weather.oas2.yml" -h api-env -u apiadmin -p changeme -c api-definition/4-complete-config.json
 ``
-3. Reload the API in API-Portal to illustrate that existing Subscriptions stay and was deployed with Zero-Down-Time
+3. Reload the API in API-Portal to illustrate that existing Subscriptions stay and the API was deployed with Zero-Down-Time to consumers
 
 ## Finish
