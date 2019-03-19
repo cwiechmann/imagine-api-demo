@@ -6,9 +6,11 @@ The Story is to simulate a brand new - API-First-Driven - Weather-API, that pass
 - Lastly the API is implemented by an API-Builder Microservice  
 
 ## Preparation:
-1. Install & Setup Swagger-Promote (https://github.com/Axway-API-Management-Plus/apimanager-swagger-promote)
-2. Check-Out this project
-3. Load the initial API-Swagger-File into Stoplight project: 1-imagine-weather-api-1st-version.json
+1. Check-Out/Clone this project
+2. Create a folder: apimanager-swagger-promote
+3. Download & extract Swagger-Promote (https://github.com/Axway-API-Management-Plus/apimanager-swagger-promote) into folder apimanager-swagger-promote
+4. Create a new Public Stoplight-Project
+5. Load the initial API-Swagger-File into Stoplight project: 1-imagine-weather-api-1st-version.json
 
 ## Demo-Steps:
 
