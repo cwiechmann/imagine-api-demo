@@ -11,10 +11,11 @@
          "Axway",
          "Chantilly"
       ]
-   }, 
+   },
 	"authenticationProfiles": [
 		{
-			"name": "HTTP Basic",
+			"name": "_default",
+      "isDefault":true,
 			"parameters": {
 				"username": "6xKFp3hL7znGM+sfb90NDjmt5t9mhvqR",
 				"password": ""
@@ -39,11 +40,11 @@
             }
          ]
       }
-   ], 
+   ],
    "clientOrganizations":[
-      "FastCars", 
-	  "Plexus Health", 
-	  "HealthMob" 
+      "FastCars",
+	  "Plexus Health",
+	  "HealthMob"
    ],
    "applications":[
       { "name":"Test" }
