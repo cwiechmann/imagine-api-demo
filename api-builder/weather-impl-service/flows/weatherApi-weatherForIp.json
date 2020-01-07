@@ -40,12 +40,16 @@
 				{
 					"name": "status",
 					"value": "200",
-					"type": "number"
+					"type": "number",
+					"metaName": "status",
+					"metaDescription": "The HTTP status code"
 				},
 				{
 					"name": "body",
 					"type": "jsonpath",
-					"value": "$.finalResponse"
+					"value": "$.finalResponse",
+					"metaName": "body",
+					"metaDescription": "The response payload"
 				}
 			],
 			"outputs": {
@@ -64,7 +68,9 @@
 				{
 					"name": "q",
 					"type": "jsonpath",
-					"value": "$.cityAndCountry"
+					"value": "$.cityAndCountry",
+					"metaName": "q",
+					"metaDescription": "city name and country code divided by comma, use ISO 3166 country codes"
 				}
 			],
 			"outputs": {
@@ -107,7 +113,8 @@
 				{
 					"name": "ipAddress",
 					"type": "jsonpath",
-					"value": "$.params.ip"
+					"value": "$.params.ip",
+					"metaName": "ipAddress"
 				}
 			],
 			"outputs": {
@@ -141,12 +148,16 @@
 				{
 					"name": "data",
 					"type": "jsonpath",
-					"value": "$"
+					"value": "$",
+					"metaName": "data",
+					"metaDescription": "The data to evaluate the template with. Use $ to access the entire context."
 				},
 				{
 					"name": "template",
 					"type": "string",
-					"value": "\"{\\n  \\\"city\\\": \\\"{{=it.response.locationInfo.data.city}}\\\", \\n  \\\"country\\\": \\\"{{=it.response.locationInfo.data.country}}\\\", \\n  \\\"country_code\\\": \\\"{{=it.response.locationInfo.data.countryCode}}\\\", \\n  \\\"coord\\\": {\\n    \\\"lon\\\": {{=it.response.locationInfo.data.lon}},\\n    \\\"lat\\\": {{=it.response.locationInfo.data.lat}}\\n  },\\n  \\\"weather\\\": [\\n    {\\n      \\\"id\\\": {{=it.response.weatherInfo.data.weather[0].id}},\\n      \\\"main\\\": \\\"{{=it.response.weatherInfo.data.weather[0].main}}\\\",\\n      \\\"description\\\": \\\"{{=it.response.weatherInfo.data.weather[0].description}}\\\",\\n      \\\"icon\\\": \\\"{{=it.response.weatherInfo.data.weather[0].icon}}\\\"\\n    }\\n  ],\\n  \\\"wind\\\": {\\n    \\\"speed\\\": {{=it.response.weatherInfo.data.wind.speed}},\\n    \\\"deg\\\": {{=it.response.weatherInfo.data.wind.deg}}\\n  },\\n  \\\"clouds\\\": {\\n    \\\"all\\\": {{=it.response.weatherInfo.data.clouds.all}}\\n  }\\n}\""
+					"value": "\"{\\n  \\\"city\\\": \\\"{{=it.response.locationInfo.data.city}}\\\", \\n  \\\"country\\\": \\\"{{=it.response.locationInfo.data.country}}\\\", \\n  \\\"country_code\\\": \\\"{{=it.response.locationInfo.data.countryCode}}\\\", \\n  \\\"coord\\\": {\\n    \\\"lon\\\": {{=it.response.locationInfo.data.lon}},\\n    \\\"lat\\\": {{=it.response.locationInfo.data.lat}}\\n  },\\n  \\\"weather\\\": [\\n    {\\n      \\\"id\\\": {{=it.response.weatherInfo.data.weather[0].id}},\\n      \\\"main\\\": \\\"{{=it.response.weatherInfo.data.weather[0].main}}\\\",\\n      \\\"description\\\": \\\"{{=it.response.weatherInfo.data.weather[0].description}}\\\",\\n      \\\"icon\\\": \\\"{{=it.response.weatherInfo.data.weather[0].icon}}\\\"\\n    }\\n  ],\\n  \\\"wind\\\": {\\n    \\\"speed\\\": {{=it.response.weatherInfo.data.wind.speed}},\\n    \\\"deg\\\": {{=it.response.weatherInfo.data.wind.deg}}\\n  },\\n  \\\"clouds\\\": {\\n    \\\"all\\\": {{=it.response.weatherInfo.data.clouds.all}}\\n  }\\n}\"",
+					"metaName": "template",
+					"metaDescription": "The doT template."
 				}
 			],
 			"outputs": {
@@ -175,12 +186,16 @@
 				{
 					"name": "data",
 					"type": "jsonpath",
-					"value": "$"
+					"value": "$",
+					"metaName": "data",
+					"metaDescription": "The data to evaluate the template with. Use $ to access the entire context."
 				},
 				{
 					"name": "template",
 					"type": "string",
-					"value": "\"{{=it.response.locationInfo.data.city}},{{=it.response.locationInfo.data.countryCode}}\""
+					"value": "\"{{=it.response.locationInfo.data.city}},{{=it.response.locationInfo.data.countryCode}}\"",
+					"metaName": "template",
+					"metaDescription": "The doT template."
 				}
 			],
 			"outputs": {
@@ -209,12 +224,16 @@
 				{
 					"name": "status",
 					"type": "number",
-					"value": "400"
+					"value": "400",
+					"metaName": "status",
+					"metaDescription": "The HTTP status code"
 				},
 				{
 					"name": "body",
 					"type": "jsonpath",
-					"value": "$.error"
+					"value": "$.error",
+					"metaName": "body",
+					"metaDescription": "The response payload"
 				}
 			],
 			"outputs": {
@@ -234,12 +253,16 @@
 				{
 					"name": "source",
 					"type": "jsonpath",
-					"value": "$.response.locationInfo.data.status"
+					"value": "$.response.locationInfo.data.status",
+					"metaName": "source",
+					"metaDescription": "The input to test."
 				},
 				{
 					"name": "value",
 					"type": "string",
-					"value": "\"success\""
+					"value": "\"success\"",
+					"metaName": "value",
+					"metaDescription": "The value to test input against."
 				}
 			],
 			"outputs": {

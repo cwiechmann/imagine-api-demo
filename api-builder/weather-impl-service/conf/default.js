@@ -1,37 +1,54 @@
 /**
  * These are your configuration file defaults.
  *
- * You can create additional configuration files ending in *.default.js or *.local.js that the server will load.
- * The *.local.js files are ignored by git/npm due to the .gitignore file in the conf directory. Docker will also ignore these files
- * using the .dockerignore file in the project root. This is so you can develop your service locally using *.local.js files
- * and keep your production configs in the *.default.js files.
+ * You can create additional configuration files ending in *.default.js or
+ * *.local.js that the server will load. The *.local.js files are ignored by
+ * git/npm due to the .gitignore file in the conf directory. Docker will also
+ * ignore these files using the .dockerignore file in the project root. This
+ * is so you can develop your service locally using *.local.js files and keep
+ * your production configs in the *.default.js files.
  *
- * For example, you may want to develop your service using a test API key. You would place that API key in a *.local.js
- * file and it would get merged over the API key that is already present in default.js
+ * For example, you may want to develop your service using a test API key. You
+ * would place that API key in a *.local.js file and it would get merged over
+ * the API key that is already present in default.js
  *
- * This is a JavaScript file (instead of JSON) so you can also use environment variables or perform logic in this file if needed.
+ * This is a JavaScript file (instead of JSON) so you can also use environment
+ * variables or perform logic in this file if needed.
  */
 module.exports = {
-	// This is your generated API key.  It was generated uniquely when you created this project.
-	// DO NOT SHARE this key with other services and be careful with this key since it controls
-	// access to your API using the default configuration.
+	// This is your generated API key.  It was generated uniquely when you
+	// created this project. DO NOT SHARE this key with other services and be
+	// careful with this key since it controls access to your API using the
+	// default configuration.
 
 	// API key
 	apikey: '6xKFp3hL7znGM+sfb90NDjmt5t9mhvqR',
 
-	// This is the base url the service will be reachable at not including the port
+	// This is the base url the service will be reachable at not including the
+	// port
 	baseurl: 'http://localhost',
-
-	// This is the port the service will be bound to
-	port: 8081,
 
 	// Enabling this property will print out the process.env at startup time
 	printEnvVars: false,
 
-	// Your ssl configuration goes here. The options are the same has what is used by
-	// Node.js https.createServer() method
-	// https://nodejs.org/api/https.html#https_https_createserver_options_requestlistener
+	// Proxy configuration. This configuration option allows to configure
+	// proxy server URL that can be leveraged in plugins that do http/s
+	// communication.
+	// proxy: 'http://localhost:8081',
 
+	// Configures your http server
+	http: {
+		// This is the port the service will be bound to. Defaults to 8080.
+		port: parseInt(process.env.PORT) || 8081,
+
+		// When this is true, the service will no longer listen on requests over http.
+		// Disabling http requires 'ssl' to be configured.
+		disabled: false
+	},
+
+	// SSL configuration goes here. The options are the same has what is used
+	// by Node.js https.createServer() method.  See:
+	// https://nodejs.org/api/https.html#https_https_createserver_options_requestlistener
 	// ssl: {
 	// 	port: 8443
 	// },
@@ -39,151 +56,215 @@ module.exports = {
 	// The number of milliseconds before timing out a request to the server.
 	timeout: 120000,
 
-	// Log level of the main logger. Can be set to 'debug', 'error', 'fatal', 'info', 'trace', or 'warn'.
-	logLevel: 'debug',
+	// Log level of the application. Can be set to (in order of most-verbose to
+	// least): trace, debug, info, warn, error, fatal, none
+	logLevel: process.env.LOG_LEVEL || 'info',
 
 	// Prefix to use for APIs, access to which is governed via `accessControl`.
 	apiPrefix: '/api',
 
-	// Control access to the service.  Set the `apiPrefixSecurity` to change the authentication
-	// security to APIs bound to `apiPrefix`.  Note that different authentication security require
-	// different input parameters.  `apiPrefixSecurity` can be any of the following:
+	// Control access to the service.  Set the `apiPrefixSecurity` to change
+	// the authentication security to APIs bound to `apiPrefix`.  Note that
+	// different authentication security require different input parameters.
+	// `apiPrefixSecurity` can be any of the following:
 	//
-	// 'none' - Disable authentication.  Note that this will make all APIs hosted on `apiPrefix`
-	// public.
+	// 'none' - Disable authentication.  Note that this will make all APIs
+	// hosted on `apiPrefix` public.
 	//
-	// 'ldap' - LDAP authentication.  Requires HTTP Basic Authentication (RFC 2617) scheme with
-	// Base64 encoded username:password.  Also requires specifying configuration property named `ldap`.
-	// It should be of type object and should contain required property `url` and optional properties described
-	// in ldapauth-fork module docs.
-	// See: https://www.npmjs.com/package/ldapauth-fork#ldapauth-config-options
+	// 'ldap' - LDAP authentication.  Requires HTTP Basic Authentication
+	// (RFC-2617) scheme with Base64 encoded username:password.  Also requires
+	// specifying configuration property named `ldap`. It should be of type
+	// object and should contain required property `url` and optional
+	// properties described in ldapauth-fork module docs. See:
+	// https://www.npmjs.com/package/ldapauth-fork#ldapauth-config-options
 	//
-	// 'apikey' - HTTP header authentication.  Requires a HTTP header `APIKey` with the API key.
+	// 'apikey' - HTTP header authentication.  Requires a HTTP header `APIKey`
+	// with the API key.
 	//
-	// 'basic' - This is the default.  HTTP Basic Authentication (RFC 2617) where the username is
-	// the `apikey`, and the password is blank.
+	// 'basic' - This is the default.  HTTP Basic Authentication (RFC 2617)
+	// where the username is the `apikey`, and the password is blank.
 	//
-	// 'plugin' - A custom authentication scheme. See: https://docs.axway.com/bundle/API_Builder_4x_allOS_en/page/authentication_schemes.html#AuthenticationSchemes-Customauthentication
+	// 'plugin' - A custom authentication scheme. See:
+	// https://docs.axway.com/bundle/API_Builder_4x_allOS_en/page/authentication_schemes.html#AuthenticationSchemes-Customauthentication
 	//
-	// If you wish any path that is not bound to `apiPrefix` to be accessible without
-	// authentication, then you can explicitly add them to `public` paths.
+	// If you wish any path that is not bound to `apiPrefix` to be accessible
+	// without authentication, then you can explicitly add them to `public`
+	// paths.
 	accessControl: {
 		apiPrefixSecurity: 'basic', // none | basic | apikey | ldap | plugin
 		public: []
 	},
 
-	// Control the settings for the @axway/api-builder-admin UI console
+	// Admin UI settings. Controls the settings for the
+	// @axway/api-builder-admin UI console.
 	admin: {
-		// Control whether the admin website is available
+		// Control whether the admin website is available.
 		enabled: true,
-		// The hostnames or IPs from which connections to admin are allowed. Hostnames must be resolvable on the
-		// server. IP ranges can also be specified. e.g. [ 'localhost', '192.168.1.0/24', '10.1.1.1' ]
-		// An empty list [] will allow unrestricted access, though this is not recommended due to security concerns.
+		// The hostnames or IPs from which connections to admin are allowed.
+		// Hostnames must be resolvable on the server. IP ranges can also be
+		// specified. e.g. [ 'localhost', '192.168.1.0/24', '10.1.1.1' ]. An
+		// empty list [] will allow unrestricted access, though this is not
+		// recommended due to security concerns.
 		allowedHosts: [
 			'localhost', '::1'
 		]
 	},
 
-	// Controls for swagger API Documentation
+	// Swagger API documentation configuration.
 	apidoc: {
-		// If you disable, the swagger API documentation will not be available. If @axway/api-builder-admin is installed and enabled, this has no effect.
+		// If you disable, the swagger API documentation will not be available.
+		// If @axway/api-builder-admin is installed and enabled, this has no
+		// effect.
 		disabled: false,
 
-		// The prefix for the swagger API documentation. Documentation is always available from '{prefix}/swagger.json'
+		// The prefix for the swagger API documentation. Documentation is always
+		// available from '{prefix}/swagger.json'
 		prefix: '/apidoc',
 
-		// Overrides to make to the swagger API documentation.
-		// This will not change how the server is hosted  - use apiPrefix, port and ssl configuration instead
-		// This is useful when the service is not consumed directly, such as through a proxy
+		// Overides for the Swagger API documentation.  These optional
+		// overrides tweak how the API is generated, but not how it is hosted
+		// (use `apiPrefix`, `port`, and `ssl` configuration instead).  This
+		// allows you to tweak specific Swagger values that are useful when
+		// the service is not consumed directly, such as when the services is
+		// exposed through a proxy.  Available options are:
+		//
+		// schemes - The transfer protocol of the service. It is an array of
+		// values that must be one or more of 'http', 'https', 'ws' or 'wss'.
+		// e.g. ['https']
+		//
+		// host - The host (name or ip) serving the service. This MUST be the
+		// host only and does not include the scheme nor sub-paths. It may
+		// include a port.
+		//
+		// basePath - The base path on which the service is served relative to
+		// the host. If provided, this MUST start with a leading slash, or be
+		// null to specify not to use basePath.
 		overrides: {
-			// The transfer protocol of the service. Values MUST be one or more of 'http', 'https', 'ws' or 'wss'
 			// schemes: [ 'https' ],
-
-			// The host (name or ip) serving the service. This MUST be the host only and does not include the scheme nor sub-paths. It MAY include a port.
 			// host: 'localhost:8080',
-
-			// The base path on which the service is served relative to the host.
-			// If provided, this MUST start with a leading slash, or be null to specify no basePath
 			// basePath: '/'
 		}
 	},
 
-	// You can generally leave this as-is since it is generated for each new service you created.
+	// You can generally leave this as-is since it is generated for each new
+	// service you created.
 	session: {
 		encryptionAlgorithm: 'aes256',
-		encryptionKey: '2DMD1zw+Bn4AuL8XWadlp9C8g+DEvB1jDBx85hmtTFQ=',
+		encryptionKey: '+N+nYBcPBK/tqDJJhwYaGq8Co4O7fKxQYblvIG27c/I=',
 		signatureAlgorithm: 'sha512-drop256',
-		signatureKey: 'XrHS35vKYLzAi61nFUed+/p5Zi7b+V96xka9KhnjvYg5e6TumFuiKc2scS4kVJ5dZzKNlYJ5Qa86lV5iYpRSUQ==',
-		secret: 'aVT3J0dmG/sl8YQojUfaxN82qbeKTj6A', // should be a large unguessable string
-		duration: 86400000, // how long the session will stay valid in ms
-		activeDuration: 300000 // if expiresIn < activeDuration, the session will be extended by activeDuration milliseconds
+		signatureKey: 'dT+//KX7aXakS1th/Qvghkcj7eUV27SzHTJj7xExAsB74KhJgfI0O51zXSW7IrlFjt9QFz/w6SoYCvNGYfLbjw==',
+		// should be a large unguessable string
+		secret: 'DR0nPsJRRhmSKjaWWO06AOHhN5XJI79K',
+		// how long the session will stay valid in ms
+		duration: 86400000,
+		// if expiresIn < activeDuration, the session will be extended by
+		// activeDuration milliseconds
+		activeDuration: 300000
 	},
 
-	// If you want signed cookies, you can set this value. if you don't want signed cookies, remove or make null
-	cookieSecret: 'E+HGYOlvyYR7+WwrtaPN8mVcumQmQgnM',
+	// If you want signed cookies, you can set this value. if you don't want
+	// signed cookies, remove or make null
+	cookieSecret: 'hwgG1mSwFCH+m/baJzHKtMY2ut7yNOif',
 
-	// your connector configuration goes here
+	// Your connector configuration goes here
 	connectors: {
 	},
 
-	// Cross-Origin Resource Sharing settings
+	// Cross-Origin Resource Sharing (CORS) settings.  The available options:
+	//
+	// 'Access-Control-Allow-Origin' - List of allowed origins.  The format can
+	// be any (e.g. '*'), a space separated list of strings (e.g.
+	// 'http://foo.com http://bar.com'), an array (e.g. ['http://foo.com',
+	// 'http://bar.com']), or a regex expression (e.g. /foo\.com$/).
+	//
+	// 'Access-Control-Allow-Credentials' - Adds the header to responses.  This
+	// response header tells browsers whether to expose the response to frontend
+	// JavaScript code when the request's credentials mode
+	// (`Request.credentials`) is `include`.
+	//
+	// 'Access-Control-Allow-Methods' - Only these methods will be allowed (out
+	// of all available HTTP methods) for an endpoint. All available methods
+	// are allowed by default (format: comma separated string or, an array:
+	// e.g. 'GET' or 'GET, PUT' or ['GET', 'PUT'])
+	//
+	// 'Access-Control-Allow-Headers' - Allowed request headers (format: comma
+	// separated string or, an array: e.g. 'content-type, authorization' or
+	// ['content-type', 'authorization']) 'Access-Control-Allow-Headers':
+	// ['content-type', 'authorization']
+	//
+	// 'Access-Control-Expose-Headers' - List of response headers exposed to the
+	// user. Always exposed headers: request-id, response-time and any headers
+	// defined in the endpoint (format: comma separated string or, an array:
+	// e.g. 'content-type, response-time' or ['content-type', 'response-time'])
+	// 'Access-Control-Expose-Headers': ['content-type', 'response-time']
+	//
 	cors: {
-		// List of allowed origins (format: any, space separated string, array or regex)
-		// 'Access-Control-Allow-Origin': '*' or 'http://foo.com http://bar.com' or ['http://foo.com', 'http://bar.com'] or /foo\.com$/,
-
-		// Sets the Access-Control-Allow-Credentials header on API responses. Can be true or false
-		// 'Access-Control-Allow-Credentials': false,
-
-		// Only these methods will be allowed out of all available methods for an endpoint. All available methods are allowed by default
-		// (format: comma separated string or, an array: e.g. 'GET' or 'GET, PUT' or ['GET', 'PUT'])
-		// 'Access-Control-Allow-Methods': ['GET', 'PUT', 'POST', 'PATCH', 'DELETE'],
-
-		// Allowed request headers (format: comma separated string or, an array: e.g. 'content-type, authorization' or ['content-type', 'authorization'])
-		// 'Access-Control-Allow-Headers': ['content-type', 'authorization'],
-
-		// List of response headers exposed to the user. Always exposed headers: request-id, response-time and any headers defined in the endpoint
-		// (format: comma separated string or, an array: e.g. 'content-type, response-time' or ['content-type', 'response-time'])
-		// 'Access-Control-Expose-Headers': ['content-type', 'response-time']
+		// 'Access-Control-Allow-Origin': '*'
 	},
 
-	// The path to a file which exports an express middleware function used as a healthcheck.
-	// See `https://expressjs.com/en/4x/api.html#middleware-callback-function-examples` for more information on
-	// express middleware functions.
-	// This healthcheck middleware is executed by invoking GET /apibuilderPing.json. By default, invoking this
-	// endpoint will return { success: <bool> } where <bool> is true as long as the service is not shutting down.
+	// Health check configuration. The path to a file which exports an express
+	// middleware function used as a healthcheck. For more information on
+	// express middleware functions, see:
+	// https://expressjs.com/en/4x/api.html#middleware-callback-function-examples
+	//
+	// This healthcheck middleware is executed by invoking
+	// "GET /apibuilderPing.json". By default, invoking this endpoint will
+	// return {success: <bool>} where <bool> is `true` as long as the service
+	// shutting down.
+	//
 	// healthCheckAPI: './healthCheck.js',
 
-	// This configuration option allows to configure proxy server URL that can be leveraged in plugins that do http/s communication
-	// proxy: 'http://localhost:8081',
-
+	// Flags configuration.  Enable features that are not ready for
+	// production, or whose use may require manual upgrade steps in legacy
+	// services.
 	flags: {
-		// Flags to enable features that are not ready for production or
-		// whose use may require manual upgrade steps in legacy services.
-
-		// Enable support for aliases in comparison operators on composite models.
-		// Breaking change for old versions as previously queries $lt, $gt, $lte, $gte, $in, $nin, $eq would not have translated aliasesd fields.
+		// Enable support for aliases in comparison operators on composite
+		// models. Breaking change for old versions as previously queries $lt,
+		// $gt, $lte, $gte, $in, $nin, $eq would not have translated aliased
+		// fields.
 		enableAliasesInCompositeOperators: true,
 
-		// Enable support for the $like comparison operator in the Memory connector.
+		// Enable support for the $like comparison operator in the Memory
+		// connector.
 		enableMemoryConnectorLike: true,
 
-		// Enable support for Models that have no primary key.
-		// Breaking change for old versions as previously the Create API returned a location header. Also the model advertised unsupported methods.
+		// Enable support for Models that have no primary key. Breaking change
+		// for old versions as previously the Create API returned a location
+		// header. Also the model advertised unsupported methods.
 		enableModelsWithNoPrimaryKey: true,
 
-		// Generate APIs and Flows that user primary key type rather than always assuming string.
-		// Breaking change for old versions as the generated APIs will change when enabled.
+		// Generate APIs and Flows that user primary key type rather than always
+		// assuming string. Breaking change for old versions as the generated
+		// APIs will change when enabled.
 		usePrimaryKeyType: true,
 
-		// Enabling this flag will cause the service to exit when there is a problem loading a plugin
+		// Enabling this flag will cause the service to exit when there is a
+		// problem loading a plugin
 		exitOnPluginFailure: true,
 
-		// Enabling this flag ensures that a plugin only receives the config relevant to that plugin.
+		// Enabling this flag ensures that a plugin only receives the config
+		// relevant to that plugin.
 		enableScopedConfig: true,
 
-		// Enable support for model names being percent-encoded as per RFC-3986.
-		// Breaking change for old versions as previously names like "foo/bar" will now be encoded as "foo%2Fbar"
-		enableModelNameEncoding: true
+		// Enable support for null fields coming from Models
+		enableNullModelFields: true,
+
+		// Enable support for model names being percent-encoded as per RFC-3986
+		// in auto-generated API. Breaking change for old versions as previously
+		// names like "foo/bar" will now be encoded as "foo%2Fbar"
+		enableModelNameEncoding: true,
+
+		// Enable support for model names being percent-encoded as per RFC-3986
+		// in API Builder's Swagger. Breaking change for old versions as
+		// previously names like "foo/bar" will now be encoded as "foo%2Fbar"
+		enableModelNameEncodingInSwagger: true,
+
+		// Enable support for model names being encoded whilst preserving the
+		// connector's slash. This flag only applies when
+		// enableModelNameEncodingInSwagger is enabled. Breaking change for old
+		// versions as previously model names that start with a connector name,
+		// e.g. "oracle/foó" will now be encoded as "oracle/fo%C3%B3".
+		enableModelNameEncodingWithConnectorSlash: true
 	},
 
 	authorization: {

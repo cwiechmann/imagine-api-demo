@@ -53,11 +53,15 @@
 				{
 					"name": "status",
 					"value": "200",
-					"type": "number"
+					"type": "number",
+					"metaName": "status",
+					"metaDescription": "The HTTP status code"
 				},
 				{
 					"name": "body",
-					"value": "$.greeting"
+					"value": "$.greeting",
+					"metaName": "body",
+					"metaDescription": "The response payload"
 				}
 			],
 			"outputs": {
@@ -76,7 +80,9 @@
 				{
 					"name": "status",
 					"value": "400",
-					"type": "number"
+					"type": "number",
+					"metaName": "status",
+					"metaDescription": "The HTTP status code"
 				}
 			],
 			"outputs": {
@@ -94,12 +100,16 @@
 			"parameters": [
 				{
 					"name": "data",
-					"value": "$"
+					"value": "$",
+					"metaName": "data",
+					"metaDescription": "The data to evaluate the template with. Use $ to access the entire context."
 				},
 				{
 					"name": "template",
 					"value": "\"{{=it.config.helloworld.salutation}} {{=it.params.username}}\"",
-					"type": "string"
+					"type": "string",
+					"metaName": "template",
+					"metaDescription": "The doT template."
 				}
 			],
 			"outputs": {
@@ -127,7 +137,9 @@
 			"parameters": [
 				{
 					"name": "source",
-					"value": "$.params.username"
+					"value": "$.params.username",
+					"metaName": "source",
+					"metaDescription": "The input to test."
 				}
 			],
 			"outputs": {

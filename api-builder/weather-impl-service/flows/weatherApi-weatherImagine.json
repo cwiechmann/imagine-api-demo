@@ -40,12 +40,16 @@
 				{
 					"name": "status",
 					"value": "200",
-					"type": "number"
+					"type": "number",
+					"metaName": "status",
+					"metaDescription": "The HTTP status code"
 				},
 				{
 					"name": "body",
 					"value": "{\n    \"coord\": {\n        \"lon\": 68494633,\n        \"lat\": 45300238\n    },\n    \"weather\": [\n        {\n            \"id\": 41300167,\n            \"main\": \"sint sit pariatur Lorem\",\n            \"description\": \"ad laborum incididunt nisi\",\n            \"icon\": \"ex\"\n        }\n    ],\n    \"wind\": {\n        \"speed\": -35749712,\n        \"deg\": -21157111\n    },\n    \"clouds\": {\n        \"all\": -6111366\n    }\n}",
-					"type": "object"
+					"type": "object",
+					"metaName": "body",
+					"metaDescription": "The response payload"
 				}
 			],
 			"outputs": {
