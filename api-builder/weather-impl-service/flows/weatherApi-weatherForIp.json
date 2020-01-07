@@ -76,14 +76,14 @@
 			"outputs": {
 				"200": {
 					"routes": [
-						"doT.1"
+						"mustache.2"
 					],
 					"context": "$.response.weatherInfo",
 					"metaName": "200"
 				},
 				"default": {
 					"routes": [
-						"doT.1"
+						"mustache.2"
 					],
 					"context": "$.response.weatherInfo",
 					"metaName": "Default"
@@ -140,82 +140,6 @@
 			},
 			"metaMethod": "getByIpAddress"
 		},
-		"doT.1": {
-			"type": "nodehandler://@axway/api-builder-plugin-fn-dot/doT",
-			"name": "Format response",
-			"method": "formatStr",
-			"parameters": [
-				{
-					"name": "data",
-					"type": "jsonpath",
-					"value": "$",
-					"metaName": "data",
-					"metaDescription": "The data to evaluate the template with. Use $ to access the entire context."
-				},
-				{
-					"name": "template",
-					"type": "string",
-					"value": "\"{\\n  \\\"city\\\": \\\"{{=it.response.locationInfo.data.city}}\\\", \\n  \\\"country\\\": \\\"{{=it.response.locationInfo.data.country}}\\\", \\n  \\\"country_code\\\": \\\"{{=it.response.locationInfo.data.countryCode}}\\\", \\n  \\\"coord\\\": {\\n    \\\"lon\\\": {{=it.response.locationInfo.data.lon}},\\n    \\\"lat\\\": {{=it.response.locationInfo.data.lat}}\\n  },\\n  \\\"weather\\\": [\\n    {\\n      \\\"id\\\": {{=it.response.weatherInfo.data.weather[0].id}},\\n      \\\"main\\\": \\\"{{=it.response.weatherInfo.data.weather[0].main}}\\\",\\n      \\\"description\\\": \\\"{{=it.response.weatherInfo.data.weather[0].description}}\\\",\\n      \\\"icon\\\": \\\"{{=it.response.weatherInfo.data.weather[0].icon}}\\\"\\n    }\\n  ],\\n  \\\"wind\\\": {\\n    \\\"speed\\\": {{=it.response.weatherInfo.data.wind.speed}},\\n    \\\"deg\\\": {{=it.response.weatherInfo.data.wind.deg}}\\n  },\\n  \\\"clouds\\\": {\\n    \\\"all\\\": {{=it.response.weatherInfo.data.clouds.all}}\\n  }\\n}\"",
-					"metaName": "template",
-					"metaDescription": "The doT template."
-				}
-			],
-			"outputs": {
-				"next": {
-					"routes": [
-						"http.setresponse.1"
-					],
-					"context": "$.finalResponse",
-					"metaName": "Next"
-				},
-				"error": {
-					"routes": [
-						"http.1"
-					],
-					"context": "$.error",
-					"metaName": "Error"
-				}
-			},
-			"metaMethod": "Format string"
-		},
-		"doT.2": {
-			"type": "nodehandler://@axway/api-builder-plugin-fn-dot/doT",
-			"name": "Extract location info",
-			"method": "formatStr",
-			"parameters": [
-				{
-					"name": "data",
-					"type": "jsonpath",
-					"value": "$",
-					"metaName": "data",
-					"metaDescription": "The data to evaluate the template with. Use $ to access the entire context."
-				},
-				{
-					"name": "template",
-					"type": "string",
-					"value": "\"{{=it.response.locationInfo.data.city}},{{=it.response.locationInfo.data.countryCode}}\"",
-					"metaName": "template",
-					"metaDescription": "The doT template."
-				}
-			],
-			"outputs": {
-				"next": {
-					"routes": [
-						"OpenWeatherAPI.1"
-					],
-					"context": "$.cityAndCountry",
-					"metaName": "Next"
-				},
-				"error": {
-					"routes": [
-						"http.1"
-					],
-					"context": "$.error",
-					"metaName": "Error"
-				}
-			},
-			"metaMethod": "Format string"
-		},
 		"http.1": {
 			"type": "nodehandler://axway-flow/http",
 			"name": "Bad request 400",
@@ -268,7 +192,7 @@
 			"outputs": {
 				"true": {
 					"routes": [
-						"doT.2"
+						"mustache.1"
 					],
 					"context": "$.equals",
 					"metaName": "True"
@@ -282,6 +206,82 @@
 				}
 			},
 			"metaMethod": "Equals"
+		},
+		"mustache.1": {
+			"type": "nodehandler://@axway/api-builder-plugin-fn-mustache/mustache",
+			"name": "Extract location",
+			"method": "format",
+			"parameters": [
+				{
+					"name": "data",
+					"type": "jsonpath",
+					"value": "$",
+					"metaName": "data",
+					"metaDescription": "The value to assign to the \"data\" variable in the template"
+				},
+				{
+					"name": "template",
+					"type": "string",
+					"value": "\"{{data.response.locationInfo.data.city}},{{data.response.locationInfo.data.countryCode}}\"",
+					"metaName": "template",
+					"metaDescription": "The Mustache template. e.g. `Hi {{data.user}}`"
+				}
+			],
+			"outputs": {
+				"next": {
+					"context": "$.cityAndCountry",
+					"routes": [
+						"OpenWeatherAPI.1"
+					],
+					"metaName": "Next"
+				},
+				"error": {
+					"context": "$.error",
+					"routes": [
+						"http.1"
+					],
+					"metaName": "Error"
+				}
+			},
+			"metaMethod": "Format string"
+		},
+		"mustache.2": {
+			"type": "nodehandler://@axway/api-builder-plugin-fn-mustache/mustache",
+			"name": "Create finale response",
+			"method": "format",
+			"parameters": [
+				{
+					"name": "template",
+					"type": "string",
+					"value": "\"{\\n  \\\"city\\\": \\\"{{data.response.locationInfo.data.city}}\\\", \\n  \\\"country\\\": \\\"{{data.response.locationInfo.data.country}}\\\", \\n  \\\"country_code\\\": \\\"{{data.response.locationInfo.data.countryCode}}\\\", \\n  \\\"coord\\\": {\\n    \\\"lon\\\": {{data.response.locationInfo.data.lon}},\\n    \\\"lat\\\": {{data.response.locationInfo.data.lat}}\\n  },\\n  \\\"weather\\\": [\\n    {\\n      \\\"id\\\": {{data.response.weatherInfo.data.weather[0].id}},\\n      \\\"main\\\": \\\"{{data.response.weatherInfo.data.weather[0].main}}\\\",\\n      \\\"description\\\": \\\"{{data.response.weatherInfo.data.weather[0].description}}\\\",\\n      \\\"icon\\\": \\\"{{data.response.weatherInfo.data.weather[0].icon}}\\\"\\n    }\\n  ],\\n  \\\"wind\\\": {\\n    \\\"speed\\\": {{data.response.weatherInfo.data.wind.speed}},\\n    \\\"deg\\\": {{data.response.weatherInfo.data.wind.deg}}\\n  },\\n  \\\"clouds\\\": {\\n    \\\"all\\\": {{data.response.weatherInfo.data.clouds.all}}\\n  }\\n}\"",
+					"metaName": "template",
+					"metaDescription": "The Mustache template. e.g. `Hi {{data.user}}`"
+				},
+				{
+					"name": "data",
+					"type": "jsonpath",
+					"value": "$",
+					"metaName": "data",
+					"metaDescription": "The value to assign to the \"data\" variable in the template"
+				}
+			],
+			"outputs": {
+				"next": {
+					"context": "$.finalResponse",
+					"routes": [
+						"http.setresponse.1"
+					],
+					"metaName": "Next"
+				},
+				"error": {
+					"context": "$.error",
+					"routes": [
+						"http.1"
+					],
+					"metaName": "Error"
+				}
+			},
+			"metaMethod": "Format string"
 		}
 	}
 }

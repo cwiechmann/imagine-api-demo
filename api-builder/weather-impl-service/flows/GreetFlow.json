@@ -93,23 +93,54 @@
 			},
 			"metaMethod": "Set HTTP Response"
 		},
-		"doT.1": {
-			"type": "nodehandler://@axway/api-builder-plugin-fn-dot/doT",
-			"name": "Format Greeting",
-			"method": "formatStr",
+		"condition.1": {
+			"type": "nodehandler://axway-flow/condition",
+			"name": "Check Username",
+			"method": "exists",
 			"parameters": [
 				{
-					"name": "data",
-					"value": "$",
-					"metaName": "data",
-					"metaDescription": "The data to evaluate the template with. Use $ to access the entire context."
+					"name": "source",
+					"value": "$.params.username",
+					"metaName": "source",
+					"metaDescription": "The input to test."
+				}
+			],
+			"outputs": {
+				"true": {
+					"context": "$.exists",
+					"routes": [
+						"mustache.1"
+					],
+					"metaName": "True"
 				},
+				"false": {
+					"context": "$.exists",
+					"routes": [
+						"response.error"
+					],
+					"metaName": "False"
+				}
+			},
+			"metaMethod": "Exists"
+		},
+		"mustache.1": {
+			"type": "nodehandler://@axway/api-builder-plugin-fn-mustache/mustache",
+			"name": "Format greeting",
+			"method": "format",
+			"parameters": [
 				{
 					"name": "template",
-					"value": "\"{{=it.config.helloworld.salutation}} {{=it.params.username}}\"",
 					"type": "string",
+					"value": "\"{{data.config.helloworld.salutation}} {{data.params.username}}\"",
 					"metaName": "template",
-					"metaDescription": "The doT template."
+					"metaDescription": "The Mustache template. e.g. `Hi {{data.user}}`"
+				},
+				{
+					"name": "data",
+					"type": "jsonpath",
+					"value": "$",
+					"metaName": "data",
+					"metaDescription": "The value to assign to the \"data\" variable in the template"
 				}
 			],
 			"outputs": {
@@ -129,36 +160,6 @@
 				}
 			},
 			"metaMethod": "Format string"
-		},
-		"condition.1": {
-			"type": "nodehandler://axway-flow/condition",
-			"name": "Check Username",
-			"method": "exists",
-			"parameters": [
-				{
-					"name": "source",
-					"value": "$.params.username",
-					"metaName": "source",
-					"metaDescription": "The input to test."
-				}
-			],
-			"outputs": {
-				"true": {
-					"context": "$.exists",
-					"routes": [
-						"doT.1"
-					],
-					"metaName": "True"
-				},
-				"false": {
-					"context": "$.exists",
-					"routes": [
-						"response.error"
-					],
-					"metaName": "False"
-				}
-			},
-			"metaMethod": "Exists"
 		}
 	}
 }
