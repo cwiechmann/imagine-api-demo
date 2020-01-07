@@ -3,8 +3,9 @@
 	"path": "/api/v1/weather",
 	"state": "unpublished",
 	"version": "1.0.0",
-	"organization": "API Development", 
-	"image":"imagine-api-logo.png", 
+	"organization": "API Development",
+	"apiDefinition": "https://next-api.stoplight.io/files.export?projectId=29309&branch=version%2F1.0&path=weather-api.oas2.yml", 
+	"image":"imagine-api-logo.png",
    "tags":{
       "Imagine":[
          "Axway",

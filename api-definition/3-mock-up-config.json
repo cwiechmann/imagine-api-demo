@@ -4,6 +4,7 @@
    "state":"unpublished",
    "version":"1.0.0",
    "organization":"API Development",
+   "apiDefinition": "https://next-api.stoplight.io/files.export?projectId=29309&branch=version%2F1.0&path=weather-api.oas2.yml", 
    "image":"imagine-api-logo.png",
    "backendBasepath":"http://192.168.65.1:8080/api",
    "tags":{
