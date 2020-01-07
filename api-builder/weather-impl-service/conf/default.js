@@ -58,7 +58,7 @@ module.exports = {
 
 	// Log level of the application. Can be set to (in order of most-verbose to
 	// least): trace, debug, info, warn, error, fatal, none
-	logLevel: process.env.LOG_LEVEL || 'debug',
+	logLevel: process.env.LOG_LEVEL || 'info',
 
 	// Prefix to use for APIs, access to which is governed via `accessControl`.
 	apiPrefix: '/api',
