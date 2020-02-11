@@ -1,0 +1,61 @@
+{
+   "name":"Axway Imagine - Weather API",
+   "path":"/api/v1/weather",
+   "state":"published",
+   "version":"1.0.0",
+   "organization":"API Development",
+   "apiDefinition": "https://next-api.stoplight.io/files.export?projectId=29309&branch=version%2F1.0&path=weather-api.oas2.yml",
+   "image":"Cloud-Sun.png",
+   "backendBasepath":"http://192.168.65.1:8081/api/api/v1/weather",
+   "tags":{
+      "Imagine":[
+         "Axway",
+         "Chantilly"
+      ]
+   },
+   "outboundProfiles":{
+      "_default":{
+         "requestPolicy":"SampleRequestPolicy"
+      }
+   },
+   "customProperties":{
+      "classification":"private"
+   },
+	"authenticationProfiles": [
+		{
+			"name": "_default",
+      "isDefault":true,
+			"parameters": {
+				"username": "6xKFp3hL7znGM+sfb90NDjmt5t9mhvqR",
+				"password": ""
+			},
+			"type": "http_basic"
+		}
+	],
+   "securityProfiles":[
+      {
+         "name":"_default",
+         "isDefault":true,
+         "devices":[
+            {
+               "name":"API Key",
+               "type":"apiKey",
+               "order":0,
+               "properties":{
+                  "apiKeyFieldName":"KeyId",
+                  "takeFrom":"HEADER",
+                  "removeCredentialsOnSuccess":"false"
+               }
+            }
+         ]
+      }
+   ],
+   "clientOrganizations":[
+      "FastCars",
+	  "Plexus Health",
+	  "HealthMob"
+   ],
+   "applications":[
+      { "name":"Test" }
+   ]
+}
