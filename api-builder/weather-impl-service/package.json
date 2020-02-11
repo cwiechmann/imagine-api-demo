@@ -21,9 +21,9 @@
 		"@axway/api-builder-plugin-fn-javascript": "^1.2.2",
 		"@axway/api-builder-plugin-fn-json": "^1.0.0",
 		"@axway/api-builder-plugin-fn-mustache": "^1.0.3",
-		"@axway/api-builder-plugin-fn-restclient": "^2.0.0",
-		"@axway/api-builder-plugin-fn-swagger": "^2.0.0",
-		"@axway/api-builder-runtime": "^4.6.0"
+		"@axway/api-builder-plugin-fn-restclient": "^2.0.17",
+		"@axway/api-builder-plugin-fn-swagger": "^2.6.12",
+		"@axway/api-builder-runtime": "^4.23.0"
 	},
 	"devDependencies": {
 		"@axway/api-builder-admin": "^1.13.1",
