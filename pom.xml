@@ -9,10 +9,10 @@
     <name>A demo API</name>
     <description>A demo API to explain CI/CD integration</description>
 
-	<properties>
-		<apiConfigFile>./api-definition/1-design-only-config.json</apiConfigFile>
+    <properties>
+        <apiConfigFile>./api-definition/1-design-only-config.json</apiConfigFile>
         <stage>api-env</stage>
-	</properties>
+    </properties>
 
     <distributionManagement>
         <snapshotRepository>
@@ -70,6 +70,10 @@
                 <configuration>
                     <addResourcesToClasspath>true</addResourcesToClasspath>
                     <mainClass>com.axway.apim.App</mainClass>
+                    <successCodes>
+                        <successCode>0</successCode>
+                        <successCode>10</successCode>
+                    </successCodes>
                     <classpath/>
                     <commandlineArgs>
                         -c ${apiConfigFile} -s ${stage} -f true
