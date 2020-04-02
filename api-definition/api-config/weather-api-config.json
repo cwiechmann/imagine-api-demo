@@ -1,11 +1,11 @@
 {
-   "name":"Weather API",
+   "name":"Axway Imagine - Weather API",
    "path":"/api/v1/weather",
    "state":"unpublished",
    "version":"1.0.0",
    "organization":"API Development",
    "apiDefinition": "https://raw.githubusercontent.com/cwiechmann/imagine-api-demo/real-world-usecase/api-definition/api-config/imagine-weather-api.json",
-   "image":"weather-logo.jpg",
+   "image":"Cloud-Sun.png",
    "backendBasepath":"http://192.168.65.1:8080/api/api/v1/weather",
    "tags":{
       "Imagine":[
