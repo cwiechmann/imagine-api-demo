@@ -4,5 +4,5 @@
 	"state": "unpublished",
 	"version": "1.0.0",
 	"organization": "API Development",
-	"apiDefinition": "https://next-api.stoplight.io/files.export?projectId=29309&branch=version%2F1.0&path=weather-api.oas2.yml"
+	"apiDefinition": "https://raw.githubusercontent.com/cwiechmann/imagine-api-demo/master/api-definition/api-swagger-files/1-imagine-weather-api-1st-version.json"
 }
