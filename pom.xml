@@ -72,7 +72,7 @@
                     <mainClass>com.axway.apim.App</mainClass>
                     <classpath/>
                     <commandlineArgs>
-                        -c ${apiConfigFile} -s ${stage}
+                        -c ${apiConfigFile} -s ${stage} -f true
                     </commandlineArgs>
                 </configuration>
             </plugin>
