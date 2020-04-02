@@ -70,10 +70,6 @@
                 <configuration>
                     <addResourcesToClasspath>true</addResourcesToClasspath>
                     <mainClass>com.axway.apim.App</mainClass>
-                    <successCodes>
-                        <successCode>0</successCode>
-                        <successCode>10</successCode>
-                    </successCodes>
                     <classpath/>
                     <commandlineArgs>
                         -c ${apiConfigFile} -s ${stage} -f true
