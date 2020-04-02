@@ -10,7 +10,7 @@
     <description>A demo API to explain CI/CD integration</description>
 
     <properties>
-        <apiConfigFile>./api-definition/api-config-weather-api-config.json</apiConfigFile>
+        <apiConfigFile>./api-definition/api-config/weather-api-config.json</apiConfigFile>
         <stage>api-env</stage>
     </properties>
 

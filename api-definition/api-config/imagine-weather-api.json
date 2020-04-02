@@ -103,6 +103,40 @@
         "description": "You want to know the weather outside?",
         "operationId": "weatherImagine"
       }
+    },
+    "/hello/world": {
+      "get": {
+        "summary": "Your GET endpoint",
+        "tags": [],
+        "responses": {},
+        "operationId": "get-hello-world"
+      },
+      "post": {
+        "summary": "",
+        "operationId": "post-hello-world",
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/from/git": {
+      "get": {
+        "summary": "Your GET endpoint",
+        "tags": [],
+        "responses": {},
+        "operationId": "get-from-git"
+      },
+      "trace": {
+        "summary": "",
+        "operationId": "trace-from-git",
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
     }
   },
   "securityDefinitions": {},
