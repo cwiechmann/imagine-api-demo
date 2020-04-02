@@ -3,7 +3,7 @@
   "info": {
     "title": "Weather API",
     "version": "1.0",
-    "description": "### **New API-Design - No-Mock/No-Implementation - Please provide feedback.**\n\nTEST\n\nAnother great Weather-API which is supposed to provide you with the weather. :-)  \nLearn more at the [Axway Imagine Summit](https://www.imaginesummits.com/europe) in Europe.",
+    "description": "### **New API-Design - No-Mock/No-Implementation - Please provide feedback.**\n\nHELLO WORLD!\n\nAnother great Weather-API which is supposed to provide you with the weather. :-)  \nLearn more at the [Axway Imagine Summit](https://www.imaginesummits.com/europe) in Europe.",
     "contact": {
       "name": "Christoph Wiechmann",
       "url": "http://www.axway.com",
@@ -102,6 +102,32 @@
         "summary": "Get the actual weather in Chantilly.",
         "description": "You want to know the weather outside?",
         "operationId": "weatherImagine"
+      }
+    },
+    "/hello/world": {
+      "get": {
+        "summary": "Your GET endpoint",
+        "tags": [],
+        "responses": {},
+        "operationId": "get-hello-world"
+      },
+      "post": {
+        "summary": "",
+        "operationId": "post-hello-world",
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        },
+        "description": "This is hello world!"
+      }
+    },
+    "/this/is/from/source-control": {
+      "get": {
+        "summary": "Your GET endpoint",
+        "tags": [],
+        "responses": {},
+        "operationId": "get-this-is-from-source-control"
       }
     }
   },
