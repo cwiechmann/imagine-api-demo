@@ -1,0 +1,81 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" 
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <artifactId>demo-api</artifactId>
+    <groupId>axway.api-management.api</groupId>
+    <version>1.0.0-SNAPSHOT</version>
+    <packaging>pom</packaging>
+    <name>A demo API</name>
+    <description>A demo API to explain CI/CD integration</description>
+
+	<properties>
+		<apiConfigFile>./api-definition/1-design-only-config.json</apiConfigFile>
+        <stage>api-env</stage>
+	</properties>
+
+    <distributionManagement>
+        <snapshotRepository>
+            <id>localNexus</id>
+            <url>http://api-env:8081/nexus/content/repositories/snapshots</url>
+        </snapshotRepository>
+        <repository>
+            <id>localNexus</id>
+            <url>http://api-env:8081/nexus/content/repositories/releases</url>
+        </repository>
+    </distributionManagement>
+
+    <dependencies>
+        <dependency>
+            <groupId>com.github.axway-api-management-plus.swagger-promote</groupId>
+            <artifactId>axway-swagger-promote-core</artifactId>
+            <version>1.6.6</version>
+        </dependency>
+    </dependencies>
+
+    <build>
+        <plugins>
+            <plugin>
+                <artifactId>maven-assembly-plugin</artifactId>
+                <version>3.2.0</version>
+                <executions>
+                    <execution>
+                        <id>distribution</id>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>single</goal>
+                        </goals>
+                        <configuration>
+                            <finalName>a2a-api-${project.version}</finalName>
+                            <appendAssemblyId>false</appendAssemblyId>
+                            <descriptors>
+                                <descriptor>assembly/assembly.xml</descriptor>
+                            </descriptors>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>exec-maven-plugin</artifactId>
+                <version>1.6.0</version>
+                <executions>
+                    <execution>
+                        <id>distribution</id>
+                        <goals>
+                            <goal>java</goal>
+                        </goals>
+                    </execution>
+                </executions>
+                <configuration>
+                    <addResourcesToClasspath>true</addResourcesToClasspath>
+                    <mainClass>com.axway.apim.App</mainClass>
+                    <classpath/>
+                    <commandlineArgs>
+                        -c ${apiConfigFile} -s ${stage}
+                    </commandlineArgs>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+</project>
