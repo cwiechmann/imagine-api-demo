@@ -198,7 +198,7 @@
     "application/json"
   ],
   "host": "dontknowyet.com",
-  "basePath": "/api/v1/weather",
+  "basePath": "/api/v2/weather",
   "responses": {
     "Weather-Response": {
       "schema": {
