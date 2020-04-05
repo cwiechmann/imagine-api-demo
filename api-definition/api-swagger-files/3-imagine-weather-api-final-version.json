@@ -2,7 +2,7 @@
   "swagger": "2.0",
   "info": {
     "title": "Weather API",
-    "version": "1.0",
+    "version": "1.1",
     "description": "Another great Weather-API which is supposed to provide you with the weather. :-)  \nLearn more at the [Axway Imagine Summit](https://www.imaginesummits.com/europe) in Europe.",
     "contact": {
       "name": "Christoph Wiechmann",
