@@ -9,9 +9,6 @@ pipeline {
    stages {
       stage('Build') {
          steps {
-            // Get some code from a GitHub repository
-            git 'https://github.com/cwiechmann/imagine-api-demo.git'
-
             // Run Maven on a Unix agent.
             sh "mvn clean exec:java"
 
