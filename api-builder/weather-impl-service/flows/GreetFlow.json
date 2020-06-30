@@ -54,13 +54,13 @@
 					"name": "status",
 					"value": "200",
 					"type": "number",
-					"metaName": "status",
+					"metaName": "Status",
 					"metaDescription": "The HTTP status code"
 				},
 				{
 					"name": "body",
 					"value": "$.greeting",
-					"metaName": "body",
+					"metaName": "Body",
 					"metaDescription": "The response payload"
 				}
 			],
@@ -81,7 +81,7 @@
 					"name": "status",
 					"value": "400",
 					"type": "number",
-					"metaName": "status",
+					"metaName": "Status",
 					"metaDescription": "The HTTP status code"
 				}
 			],
@@ -101,7 +101,7 @@
 				{
 					"name": "source",
 					"value": "$.params.username",
-					"metaName": "source",
+					"metaName": "Source",
 					"metaDescription": "The input to test."
 				}
 			],
@@ -132,15 +132,15 @@
 					"name": "template",
 					"type": "string",
 					"value": "\"{{data.config.helloworld.salutation}} {{data.params.username}}\"",
-					"metaName": "template",
-					"metaDescription": "The Mustache template. e.g. `Hi {{data.user}}`"
+					"metaName": "Template",
+					"metaDescription": "The Mustache template. e.g. `Hi {{data.user}}`."
 				},
 				{
 					"name": "data",
 					"type": "jsonpath",
 					"value": "$",
-					"metaName": "data",
-					"metaDescription": "The value to assign to the \"data\" variable in the template"
+					"metaName": "Data",
+					"metaDescription": "The value to assign to the \"data\" variable in the template."
 				}
 			],
 			"outputs": {

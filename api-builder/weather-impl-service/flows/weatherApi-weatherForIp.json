@@ -41,14 +41,14 @@
 					"name": "status",
 					"value": "200",
 					"type": "number",
-					"metaName": "status",
+					"metaName": "Status",
 					"metaDescription": "The HTTP status code"
 				},
 				{
 					"name": "body",
 					"type": "jsonpath",
 					"value": "$.finalResponse",
-					"metaName": "body",
+					"metaName": "Body",
 					"metaDescription": "The response payload"
 				}
 			],
@@ -149,14 +149,14 @@
 					"name": "status",
 					"type": "number",
 					"value": "400",
-					"metaName": "status",
+					"metaName": "Status",
 					"metaDescription": "The HTTP status code"
 				},
 				{
 					"name": "body",
 					"type": "jsonpath",
 					"value": "$.error",
-					"metaName": "body",
+					"metaName": "Body",
 					"metaDescription": "The response payload"
 				}
 			],
@@ -178,14 +178,14 @@
 					"name": "source",
 					"type": "jsonpath",
 					"value": "$.response.locationInfo.data.status",
-					"metaName": "source",
+					"metaName": "Source",
 					"metaDescription": "The input to test."
 				},
 				{
 					"name": "value",
 					"type": "string",
 					"value": "\"success\"",
-					"metaName": "value",
+					"metaName": "Value",
 					"metaDescription": "The value to test input against."
 				}
 			],
@@ -216,15 +216,15 @@
 					"name": "data",
 					"type": "jsonpath",
 					"value": "$",
-					"metaName": "data",
-					"metaDescription": "The value to assign to the \"data\" variable in the template"
+					"metaName": "Data",
+					"metaDescription": "The value to assign to the \"data\" variable in the template."
 				},
 				{
 					"name": "template",
 					"type": "string",
 					"value": "\"{{data.response.locationInfo.data.city}},{{data.response.locationInfo.data.countryCode}}\"",
-					"metaName": "template",
-					"metaDescription": "The Mustache template. e.g. `Hi {{data.user}}`"
+					"metaName": "Template",
+					"metaDescription": "The Mustache template. e.g. `Hi {{data.user}}`."
 				}
 			],
 			"outputs": {
@@ -254,15 +254,15 @@
 					"name": "template",
 					"type": "string",
 					"value": "\"{\\n  \\\"city\\\": \\\"{{data.response.locationInfo.data.city}}\\\", \\n  \\\"country\\\": \\\"{{data.response.locationInfo.data.country}}\\\", \\n  \\\"country_code\\\": \\\"{{data.response.locationInfo.data.countryCode}}\\\", \\n  \\\"coord\\\": {\\n    \\\"lon\\\": {{data.response.locationInfo.data.lon}},\\n    \\\"lat\\\": {{data.response.locationInfo.data.lat}}\\n  },\\n  \\\"weather\\\": [\\n    {\\n      \\\"id\\\": {{data.response.weatherInfo.data.weather[0].id}},\\n      \\\"main\\\": \\\"{{data.response.weatherInfo.data.weather[0].main}}\\\",\\n      \\\"description\\\": \\\"{{data.response.weatherInfo.data.weather[0].description}}\\\",\\n      \\\"icon\\\": \\\"{{data.response.weatherInfo.data.weather[0].icon}}\\\"\\n    }\\n  ],\\n  \\\"wind\\\": {\\n    \\\"speed\\\": {{data.response.weatherInfo.data.wind.speed}},\\n    \\\"deg\\\": {{data.response.weatherInfo.data.wind.deg}}\\n  },\\n  \\\"clouds\\\": {\\n    \\\"all\\\": {{data.response.weatherInfo.data.clouds.all}}\\n  }\\n}\"",
-					"metaName": "template",
-					"metaDescription": "The Mustache template. e.g. `Hi {{data.user}}`"
+					"metaName": "Template",
+					"metaDescription": "The Mustache template. e.g. `Hi {{data.user}}`."
 				},
 				{
 					"name": "data",
 					"type": "jsonpath",
 					"value": "$",
-					"metaName": "data",
-					"metaDescription": "The value to assign to the \"data\" variable in the template"
+					"metaName": "Data",
+					"metaDescription": "The value to assign to the \"data\" variable in the template."
 				}
 			],
 			"outputs": {
