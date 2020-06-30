@@ -72,7 +72,7 @@
                     <mainClass>com.axway.apim.APIImportApp</mainClass>
                     <classpath/>
                     <commandlineArgs>
-                        -c ${apiConfigFile} -s ${stage} -f true
+                        -c ${apiConfigFile} -s ${stage} -force
                     </commandlineArgs>
                 </configuration>
             </plugin>
