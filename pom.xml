@@ -69,7 +69,7 @@
                 </executions>
                 <configuration>
                     <addResourcesToClasspath>true</addResourcesToClasspath>
-                    <mainClass>com.axway.apim.App</mainClass>
+                    <mainClass>com.axway.apim.APIImportApp</mainClass>
                     <classpath/>
                     <commandlineArgs>
                         -c ${apiConfigFile} -s ${stage} -f true
