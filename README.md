@@ -7,8 +7,8 @@ The Story is to simulate a brand new - API-First-Driven - Weather-API, that pass
 
 ## Preparation:
 1. Check-Out/Clone this project
-2. Create a folder: apimanager-swagger-promote
-3. Download & extract Swagger-Promote (https://github.com/Axway-API-Management-Plus/apimanager-swagger-promote) into folder apimanager-swagger-promote
+2. Create a folder: apim-cli
+3. Download & extract the APIM-CLI (https://github.com/Axway-API-Management-Plus/apim-cli) into folder apim-cli
 4. Create a new Public Stoplight-Project
 5. Load the initial API-Swagger-File into Stoplight project: 1-imagine-weather-api-1st-version.json
 
@@ -19,14 +19,14 @@ In this step, we use the sample Swagger-File: 1-imagine-weather-api-1st-version.
 Secondly we extend the existing API in Stoplight about a second method by importing 2-design-with-image-config.json into Stoplight.  
 
 1. Open the initial API-Swagger-Version in Stoplight and explain Stoplight  
-2. Deploy the very bare API-Version into the API-Management platform with minimal configuration (not explaing Swagger-Promote)  
+2. Deploy the very bare API-Version into the API-Management platform with minimal configuration (not explaing the CLI)  
 ``
-scripts\run-swagger-import.bat -a "https://next-api.stoplight.io/files.export?projectId=19639&branch=version%2F1.0&path=weather.oas2.yml" -h api-env -u apiadmin -p changeme -c api-definition/1-design-only-config.json
+apim.bat -a "https://next-api.stoplight.io/files.export?projectId=19639&branch=version%2F1.0&path=weather.oas2.yml" -h api-env -u apiadmin -p changeme -c api-definition/1-design-only-config.json
 ``
 3. API is deployed, with only 1 Method, explore it in API-Portal  
 4. Re-Deploy the same 1-Method-API with an Images, some tags, etc.  
 ``
-scripts\run-swagger-import.bat -a "https://next-api.stoplight.io/files.export?projectId=19639&branch=version%2F1.0&path=weather.oas2.yml" -h api-env -u apiadmin -p changeme -c api-definition/2-design-with-image-config.json
+apim.bat -a "https://next-api.stoplight.io/files.export?projectId=19639&branch=version%2F1.0&path=weather.oas2.yml" -h api-env -u apiadmin -p changeme -c api-definition/2-design-with-image-config.json
 ``
 4. As the initial API-Version has only one useless method, we are now loading the 2nd version of the API-Swagger into Stoplight: 2-imagine-weather-api-2nd-version.json  
 5. And re-deploy with the same configuration (incl. Image, Tags, etc.)  
