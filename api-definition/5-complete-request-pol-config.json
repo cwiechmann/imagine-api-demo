@@ -15,7 +15,7 @@
    },
    "outboundProfiles":{
       "_default":{
-         "requestPolicy":"SampleRequestPolicy"
+         "requestPolicy":"Corporate request policy"
       }
    },
    "customProperties":{
