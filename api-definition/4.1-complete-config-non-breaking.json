@@ -1,51 +1,44 @@
 {
-   "name":"Axway Imagine - Weather API",
-   "path":"/api/v1/weather",
-   "state":"published",
-   "version":"1.0.0",
-   "organization":"API Development",
-   "apiDefinition": "https://raw.githubusercontent.com/cwiechmann/imagine-api-demo/master/api-definition/api-swagger-files/2-imagine-weather-api-2nd-version.json",
-   "image":"weather-logo.jpg",
-   "backendBasepath":"http://192.168.65.1:8081/api/api/v1/weather",
-   "tags":{
-      "Imagine":[
-         "Axway",
-         "Chantilly"
+  "name": "Axway Imagine - Weather API",
+  "path": "/api/v1/weather",
+  "state": "published",
+  "version": "1.0.0",
+  "organization": "API Development",
+  "apiDefinition": "https://raw.githubusercontent.com/cwiechmann/imagine-api-demo/master/api-definition/api-swagger-files/2-imagine-weather-api-2nd-version.json",
+  "image": "weather-logo.jpg",
+  "backendBasepath": "http://192.168.65.1:8081/api/api/v1/weather",
+  "tags": {
+    "Imagine": ["Axway", "Chantilly"]
+  },
+  "authenticationProfiles": [
+    {
+      "name": "_default",
+      "isDefault": true,
+      "parameters": {
+        "username": "6xKFp3hL7znGM+sfb90NDjmt5t9mhvqR",
+        "password": ""
+      },
+      "type": "http_basic"
+    }
+  ],
+  "securityProfiles": [
+    {
+      "name": "_default",
+      "isDefault": true,
+      "devices": [
+        {
+          "name": "API Key",
+          "type": "apiKey",
+          "order": 0,
+          "properties": {
+            "apiKeyFieldName": "KeyId",
+            "takeFrom": "HEADER",
+            "removeCredentialsOnSuccess": "false"
+          }
+        }
       ]
-   },
-	"authenticationProfiles": [
-		{
-			"name": "_default",
-      "isDefault":true,
-			"parameters": {
-				"username": "6xKFp3hL7znGM+sfb90NDjmt5t9mhvqR",
-				"password": ""
-			},
-			"type": "http_basic"
-		}
-	],
-   "securityProfiles":[
-      {
-         "name":"_default",
-         "isDefault":true,
-         "devices":[
-            {
-               "name":"API Key",
-               "type":"apiKey",
-               "order":0,
-               "properties":{
-                  "apiKeyFieldName":"KeyId",
-                  "takeFrom":"HEADER",
-                  "removeCredentialsOnSuccess":"false"
-               }
-            }
-         ]
-      }
-   ],
-   "clientOrganizations":[
-      "ALL"
-   ],
-   "applications":[
-      { "name":"Test" }
-   ]
+    }
+  ],
+  "clientOrganizations": ["ALL"],
+  "applications": [{ "name": "Test" }]
 }
