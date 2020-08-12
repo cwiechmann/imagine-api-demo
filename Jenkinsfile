@@ -11,7 +11,7 @@ pipeline {
          steps {
             echo 'Starting to build docker image'
             script {
-               def customImage = docker.build("weather-api:${env.BUILD_ID}")
+               def customImage = docker.build("weather-api:${env.BUILD_ID}", "-f api-builder/weather-impl-service/Dockerfile .")
                customImage.push()
             }
             // Run Maven on a Unix agent.
