@@ -16,8 +16,7 @@
       "name": "_default",
       "isDefault": true,
       "parameters": {
-        "username": "6xKFp3hL7znGM+sfb90NDjmt5t9mhvqR",
-        "password": ""
+        "username": "6xKFp3hL7znGM+sfb90NDjmt5t9mhvqR"
       },
       "type": "http_basic"
     }
