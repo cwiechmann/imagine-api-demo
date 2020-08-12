@@ -28,8 +28,8 @@
     <dependencies>
         <dependency>
             <groupId>com.github.axway-api-management-plus.apim-cli</groupId>
-            <artifactId>apimcli-api-import</artifactId>
-            <version>1.1.0</version>
+            <artifactId>apimcli-apis</artifactId>
+            <version>1.2.1</version>
         </dependency>
     </dependencies>
 
