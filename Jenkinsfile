@@ -9,6 +9,11 @@ pipeline {
    stages {
       stage('Build') {
          steps {
+            echo 'Starting to build docker image'
+            script {
+               def customImage = docker.build("weather-api:${env.BUILD_ID}")
+               customImage.push()
+            }
             // Run Maven on a Unix agent.
             sh "mvn clean exec:java"
 
