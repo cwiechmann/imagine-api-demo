@@ -10,7 +10,7 @@
     <description>A demo API to explain CI/CD integration</description>
 
     <properties>
-        <apiConfigFile>./api-definition/4-complete-config.json</apiConfigFile>
+        <apiConfigFile>./api-definition/3-mock-up-config.json</apiConfigFile>
         <stage>api-env</stage>
     </properties>
 
