@@ -4,7 +4,7 @@
   "state": "published",
   "version": "1.0.0",
   "organization": "API Development",
-  "apiDefinition": "https://raw.githubusercontent.com/cwiechmann/imagine-api-demo/master/api-definition/api-swagger-files/2-imagine-weather-api-2nd-version.json",
+  "apiDefinition": "./api-swagger-files/2-imagine-weather-api-2nd-version.json",
   "image": "weather-logo.jpg",
   "backendBasepath": "http://192.168.65.1:8081/api/api/v1/weather",
   "tags": {

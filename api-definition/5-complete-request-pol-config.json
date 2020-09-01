@@ -4,7 +4,7 @@
    "state":"published",
    "version":"1.0.0",
    "organization":"API Development",
-   "apiDefinition": "https://raw.githubusercontent.com/cwiechmann/imagine-api-demo/master/api-definition/api-swagger-files/3-imagine-weather-api-final-version.json",
+   "apiDefinition": "./api-swagger-files/3-imagine-weather-api-final-version.json",
    "image":"Cloud-Sun.png",
    "backendBasepath":"http://192.168.65.1:8081/api/api/v1/weather",
    "tags":{
